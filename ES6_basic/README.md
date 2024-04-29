@@ -1,0 +1,1 @@
+Beginning of my work related to ECMAScript6
