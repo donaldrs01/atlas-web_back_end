@@ -1,5 +1,5 @@
 export function taskFirst() {
-    // ensures that it's a constant value that doesn't change
+    // ensures that it's a consistent value that doesn't change
     const task = 'I prefer const when I can.';
     return task;
 }
