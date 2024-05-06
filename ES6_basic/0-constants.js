@@ -1,5 +1,5 @@
 export function taskFirst() {
-    // const ensures that it's a constant value that doesn't change
+    // ensures that it's a constant value that doesn't change
     const task = 'I prefer const when I can.';
     return task;
 }
@@ -9,7 +9,7 @@ export function getLast() {
 }
 
 export function taskNext() {
-    // because the value of 'combination' is changed, we use 'let' keyword
+    // because the value of 'combination' is changed, we use l3t keyword
     let combination = 'But sometimes let';
     combination += getLast();
 
