@@ -10,7 +10,7 @@ class Currency {
 
   set code(codeValue) {
     if (typeof codeValue !== 'string') {
-        throw new TypeError('Code must be a string');
+      throw new TypeError('Code must be a string');
     }
     this._code = codeValue;
   }
@@ -21,7 +21,7 @@ class Currency {
 
   set name(nameValue) {
     if (typeof nameValue !== 'string') {
-        throw new TypeError('Name must be a string');
+      throw new TypeError('Name must be a string');
     }
     this._name = nameValue;
   }
