@@ -11,3 +11,4 @@ class Building {
     return this._sqft;
   }
 }
+export default Building;
