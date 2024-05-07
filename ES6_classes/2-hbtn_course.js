@@ -4,13 +4,15 @@ class HolbertonCourse {
     this._length = length;
     this.students = students;
   }
+
   // Getter / setter methods for 'name' property
   get name() {
     return this._name;
   }
+
   set name(nameValue) {
     if (typeof nameValue !== 'string') {
-        throw new TypeError('Name must be a string');
+      throw new TypeError('Name must be a string');
     }
     this._name = nameValue;
   }
@@ -19,9 +21,10 @@ class HolbertonCourse {
   get length() {
     return this._length;
   }
+
   set length(lengthValue) {
     if (typeof lengthValue !== 'number') {
-        throw new TypeError('Length must be a number');
+      throw new TypeError('Length must be a number');
     }
     this._length = lengthValue;
   }
@@ -30,6 +33,7 @@ class HolbertonCourse {
   get students() {
     return this._students;
   }
+
   set students(studentsValue) {
     this._students = studentsValue;
     }
