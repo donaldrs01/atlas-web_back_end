@@ -1,5 +1,3 @@
-import ClassRoom from "./0-classroom";
-
 class HolbertonCourse {
   constructor(name, length, students) {
     this._name = name; // call 'name' setter for type validation
@@ -36,3 +34,5 @@ class HolbertonCourse {
     this._students = studentsValue;
     }
 }
+
+export default HolbertonCourse;
