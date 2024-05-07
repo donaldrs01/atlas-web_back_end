@@ -12,4 +12,4 @@ function initializeRooms() {
 }
 
 // Export function to allow for import elsewhere
-export { initializeRooms };
+export default initializeRooms;
