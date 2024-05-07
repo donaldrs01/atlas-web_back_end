@@ -6,10 +6,8 @@ function initializeRooms() {
     new ClassRoom(20),
     new ClassRoom(34),
   ];
-
-    return rooms;
-
+  
+  return rooms;
 }
-
-// Export function to allow for import elsewhere
+// Export function so it can be imported elsewhere
 export default initializeRooms;
