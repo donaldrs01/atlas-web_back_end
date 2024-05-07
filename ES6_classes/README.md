@@ -1,0 +1,1 @@
+Project directory for work dealing with classes in ES6. 
