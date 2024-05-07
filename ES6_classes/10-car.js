@@ -4,6 +4,4 @@ export default class Car {
     this._motor = motor;
     this._color = color;
   }
-
-  
 }
