@@ -29,7 +29,7 @@ class Pricing {
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this._currency.name} ${this._currency.code})`;
+    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
   }
 
   // static method that doesn't depend on any specific instance of 'Pricing' class
