@@ -6,7 +6,6 @@ function initializeRooms() {
     new ClassRoom(20),
     new ClassRoom(34),
   ];
-  
   return rooms;
 }
 // Export function so it can be imported elsewhere
