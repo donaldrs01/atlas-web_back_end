@@ -36,7 +36,7 @@ class HolbertonCourse {
 
   set students(studentsValue) {
     if (!Array.isArray(studentsValue)) {
-        throw new TypeError('Students must be an array');
+      throw new TypeError('Students must be an array');
     }
     this._students = studentsValue;
   }
