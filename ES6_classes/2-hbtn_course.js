@@ -36,7 +36,7 @@ class HolbertonCourse {
 
   set students(studentsValue) {
     this._students = studentsValue;
-    }
+  }
 }
 
 export default HolbertonCourse;
