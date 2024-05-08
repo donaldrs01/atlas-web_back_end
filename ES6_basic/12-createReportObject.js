@@ -6,7 +6,8 @@ export default function createReportObject(employeesList) {
       ...employeesList,
     },
     getNumberOfDepartments() {
-      // method counts length of the keys array, providing us with # of departments in allEmployees obj
+      // method counts length of the keys array
+      // provides us with # of departments in allEmployees obj
       return Object.keys(this.allEmployees).length;
     },
   };
