@@ -6,7 +6,7 @@ export default function guardrail(mathFunction) {
     const answer = mathFunction();
     queue.push(answer);
   } catch (error) {
-    queue.push(error);
+    queue.push(`Error: ${error.message}`);
   }
   // Outside of this block, append guardrail message
   // Will log in every case
