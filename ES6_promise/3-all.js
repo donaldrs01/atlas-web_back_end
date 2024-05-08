@@ -7,7 +7,7 @@ export default function handleProfileSignup() {
       const [photoObject, userObject] = resolvedPromises;
       console.log(`${photoObject.body} ${userObject.firstName} ${userObject.lastName}`);
     })
-    .catch((error) => {
-      console.log('Signup system offline', error);
+    .catch(() => {
+      console.log('Signup system offline');
     });
 }
