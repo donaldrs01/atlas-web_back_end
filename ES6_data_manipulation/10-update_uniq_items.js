@@ -7,7 +7,7 @@ export default function updateUniqueItems(map) {
 
   for (const [key, value] of map) {
     if (value === 1) {
-      // update value to 100 if set to 1
+      // update value to 100 if originally set to 1
       updatedMap.set(key, 100);
     } else {
       updatedMap.set(key, value);
