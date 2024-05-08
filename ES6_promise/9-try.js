@@ -1,5 +1,5 @@
 export default function guardrail(mathFunction) {
-  // create empty array
+  // create empty array to log messages
   const queue = [];
   try {
     // perform math operation and append the answer to the queue array
