@@ -10,6 +10,6 @@ export default function getFullResponseFromAPI(success) {
     } else {
       // Reject promise with error message
       reject(new Error('The fake API is not working currently'));
-      }
-    });
+    }
+  });
 }
