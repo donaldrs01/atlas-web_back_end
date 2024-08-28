@@ -5,7 +5,7 @@ Module that includes function definition for 'sum_list'
 from typing import List
 
 
-def sum_list(input_list: List[float]) -> float: # type List
+def sum_list(input_list: List[float]) -> float:  # type List
     """
     Function that receives series of floats as args and returns their sum
 
