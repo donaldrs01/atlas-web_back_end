@@ -2,6 +2,8 @@
 """
 Module that includes a type-annotated function that concatenates two strings
 """
+
+
 def concat(str1: str, str2: str) -> str:
     """
 
@@ -12,3 +14,5 @@ def concat(str1: str, str2: str) -> str:
     Returns:
         string: the concatenated string
     """
+
+    return str1 + str2
