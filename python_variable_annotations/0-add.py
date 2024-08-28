@@ -3,6 +3,7 @@
 Module that defines a basic add function with type documentation
 """
 
+
 def add(a: float, b: float) -> float:
     """_summary_
 
