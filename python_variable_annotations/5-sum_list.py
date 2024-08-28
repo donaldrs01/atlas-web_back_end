@@ -16,4 +16,3 @@ def sum_list(input_list: List[float]) -> float:  # type List
         float: sum of ints as a float
     """
     return sum(input_list)
-
