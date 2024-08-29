@@ -1,0 +1,1 @@
+This project directory is for the second project related to asynchronous functions. It deals with async generators and async comprehensions.
