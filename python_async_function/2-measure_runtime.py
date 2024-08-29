@@ -10,7 +10,7 @@ from typing import List
 wait_n = __import__("1-concurrent_coroutines").wait_n
 
 
-async def measure_time(n: int, max_delay: int) -> float:
+def measure_time(n: int, max_delay: int) -> float:
     """
     Function that measures and returns the amount of time
     for the wait_n function to execute
@@ -23,7 +23,7 @@ async def measure_time(n: int, max_delay: int) -> float:
         float: tatal execution time
     """
     start_time = time.time()  # measure starting time
-    await wait_n(n, max_delay)  # execute wait_n
+    asyncio.run(wait_n(n, max_delay))  # execute wait_n using asyncio.run
     end_time = time.time()  # record time after wait_n finishes process
 
     total_time = end_time - start_time
