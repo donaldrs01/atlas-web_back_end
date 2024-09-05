@@ -27,13 +27,17 @@ class LIFOCache(BaseCaching):
             item: value associated with stored key
         """
         if key is not None and item is not None:
-            self.cache_data[key] = item  # add item to cache
-            self.key_stack.append(key)  # add item to key_stack array
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            last_key = self.key_stack.pop()  # remove last element added
-            del self.cache_data[last_key]
-            print("DISCARD:", last_key)
+            # If the key already exists, remove from stack
+            if key in self.cache_data:
+                self.key_stack.remove(key)
+            else:
+                if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                    last_key = self.key_stack.pop()  # remove last element
+                    del self.cache_data[last_key]
+                    print("DISCARD:", last_key)
+            
+            self.cache_data[key] = item  # add new item to cache
+            self.key_stack.append(key)  # add new key to key_stack
 
     def get(self, key):
         """
