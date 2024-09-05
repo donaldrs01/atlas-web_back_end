@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 """
-LRU (least recently used) cache model implementation
+MRU (most recently used) cache model implementation
 """
 from collections import OrderedDict
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-    Caching system that uses LRU (least recently used)
+    Caching system that uses MRU (most recently used)
     logic and inherits properties from BaseCaching
     """
     def __init__(self):
@@ -21,7 +21,7 @@ class LRUCache(BaseCaching):
     def put(self, key, item):
         """
         Function to add items into cache
-        If exceeding limit, will remove LRU item
+        If exceeding limit, will remove MRU item
         """
         if key is None or item is None:
             return
@@ -32,10 +32,9 @@ class LRUCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            # pop first item in stack (LRU item)
-            first_key = list(self.cache_data.keys())[0]  # index the first key in list
-            del self.cache_data[first_key]
-            print("DISCARD:", first_key)
+            last_key = next(reversed(self.cache_data))  # retrieve last key (MRU)
+            del self.cache_data[last_key]
+            print("DISCARD:", last_key)
 
     def get(self, key):
         """
