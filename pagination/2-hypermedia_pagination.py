@@ -87,7 +87,7 @@ class Server:
         pages_total = math.ceil(items_total / page_size)
 
         #  next_page and prev_page calculation
-        if page < total_pages:
+        if page < pages_total:
             next_page = page + 1
         else:
             next_page = None
@@ -101,4 +101,7 @@ class Server:
             "page_size": len(data),
             "page": page,
             "data": data,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": pages_total
         }
