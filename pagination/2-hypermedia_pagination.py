@@ -64,7 +64,6 @@ class Server:
             return data[start_index:end_index]
         else:
             return []
-    
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
@@ -73,7 +72,7 @@ class Server:
 
         Args:
             page (int, optional): Current page nunber. Defaults to 1.
-            page_size (int, optional): Number of items on a page. efaults to 10.
+            page_size (int, optional): Number of items on a page.
 
         Returns:
             dict: Dictionary that contains pagination details
@@ -91,12 +90,12 @@ class Server:
             next_page = page + 1
         else:
             next_page = None
-        
+
         if page > 1:
             prev_page = page - 1
         else:
             prev_page = None
-        
+
         return {
             "page_size": len(data),
             "page": page,
