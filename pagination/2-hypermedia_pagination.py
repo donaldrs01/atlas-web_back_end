@@ -4,7 +4,7 @@ Module for index_range function with additional functionality
 """
 import csv
 import math
-from typing import List
+from typing import List, Dict
 
 
 def index_range(page: int, page_size: int) -> tuple:
@@ -67,3 +67,38 @@ class Server:
     
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """
+        Function that provides detailed pagination information in
+        dictionary form
+
+        Args:
+            page (int, optional): Current page nunber. Defaults to 1.
+            page_size (int, optional): Number of items on a page. efaults to 10.
+
+        Returns:
+            dict: Dictionary that contains pagination details
+        """
+        #  Collect data through call of get_page
+        data = self.get_page(page, page_size)
+        #  Calculate total_pages by first finding length of dataset
+        #  and dividing by the number of items per page
+        items_total = len(self.dataset())
+        #  math.ceil rounds up to nearest integer
+        pages_total = math.ceil(items_total / page_size)
+
+        #  next_page and prev_page calculation
+        if page < total_pages:
+            next_page = page + 1
+        else:
+            next_page = None
+        
+        if page > 1:
+            prev_page = page - 1
+        else:
+            prev_page = None
+        
+        return {
+            "page_size": len(data),
+            "page": page,
+            "data": data,
+        }
