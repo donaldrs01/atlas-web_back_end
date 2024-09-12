@@ -50,5 +50,6 @@ class RedactingFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
         no_redact = super(RedactingFormatter, self).format(record)
         # use filter_datum to create redacted message
-        redacted_message = filter_datum(self.fields, self.REDACTION, no_redact, self.SEPARATOR)
+        redacted_message = filter_datum(self.fields, self.REDACTION,
+                                        no_redact, self.SEPARATOR)
         return redacted_message
