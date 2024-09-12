@@ -4,6 +4,7 @@ Module for filter_datum function that uses regex
 to obfuscate certain user information
 """
 import re
+import logging
 from typing import List
 
 
@@ -31,3 +32,20 @@ def filter_datum(fields: List[str], redaction: str, message: str,
     #  re.sub to replace field values with redaction symbols
         message = re.sub(pattern, f"{field}={redaction}{separator}", message)
     return message
+
+
+class RedactingFormatter(logging.Formatter):
+    """ Redacting Formatter class
+        """
+
+    REDACTION = "***"
+    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
+    SEPARATOR = ";"
+
+    def __init__(self, fields: List[str]):
+        #  Each RedactingFormatter object initialized with fields
+        super(RedactingFormatter, self).__init__(self.FORMAT)
+        self.fields = fields  # store list of fields in object instance
+
+    def format(self, record: logging.LogRecord) -> str:
+        NotImplementedError
