@@ -48,6 +48,14 @@ class RedactingFormatter(logging.Formatter):
         self.fields = fields  # store list of fields in object instance
 
     def format(self, record: logging.LogRecord) -> str:
+        """Formats the message log, redacting certain PII
+
+        Args:
+            record (logging.LogRecord): log record to be formatted
+
+        Returns:
+            str: the redacted log message
+        """
         no_redact = super(RedactingFormatter, self).format(record)
         # use filter_datum to create redacted message
         redacted_message = filter_datum(self.fields, self.REDACTION,
