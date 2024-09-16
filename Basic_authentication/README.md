@@ -1,0 +1,1 @@
+Project directory for schoolwork related to basic user authentication processes.
