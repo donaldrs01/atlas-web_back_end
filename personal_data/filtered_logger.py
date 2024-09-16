@@ -64,7 +64,20 @@ class RedactingFormatter(logging.Formatter):
                                         no_redact, self.SEPARATOR)
         return redacted_message
 
+
 def get_logger() -> logging.Logger:
     """
-    Creates a logger that redacts information flagged as PII
+    Creates and returns a logger that redacts information flagged as PII
     """
+    # Create logger "user_data"
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False  # stop logging propogation to parent loggers
+    #  stream_handler sends log messages to console
+    stream_handler = logging.StreamHandler()
+    #  formats log message to redact PII
+    redact_format = RedactingFormatter(list(PII_FIELDS))
+    stream_handler.setFormatter(redact_format)
+    logger.addHandler(stream_handler)
+
+    return logger
