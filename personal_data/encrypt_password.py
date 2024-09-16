@@ -4,6 +4,7 @@ Module that contains hash_password function
 """
 import bcrypt
 
+
 def hash_password(password: str) -> bytes:
     """
     Function that hashes a password (passed as str)
