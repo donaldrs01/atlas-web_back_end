@@ -5,7 +5,9 @@ to obfuscate certain user information
 """
 import re
 import logging
-from typing import List
+from typing import List, Tuple
+
+PII_FIELDS: Tuple[str, ...] = ("name", "email", "phone", "ssn", "password")
 
 
 def filter_datum(fields: List[str], redaction: str, message: str,
@@ -61,3 +63,8 @@ class RedactingFormatter(logging.Formatter):
         redacted_message = filter_datum(self.fields, self.REDACTION,
                                         no_redact, self.SEPARATOR)
         return redacted_message
+
+def get_logger() -> logging.Logger:
+    """
+    Creates a logger that redacts information flagged as PII
+    """
