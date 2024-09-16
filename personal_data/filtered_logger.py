@@ -3,6 +3,8 @@
 Module for filter_datum function that uses regex
 to obfuscate certain user information
 """
+import os
+import mysql.connector
 import re
 import logging
 from typing import List, Tuple
@@ -81,3 +83,25 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """
+    Function that connects to MySQL db using stored credential
+    variables
+
+    Returns:
+        mysql.connector.connection.MySQLConnection object
+    """
+    # Grab database credentials from environmental variables using os.getenv
+    db_username = os.getenv("PERSONAL_DATA_DB_USERNAME", "root")
+    db_password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
+    db_host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
+    db_name = os.getenv("PERSONAL_DATA_DB_NAME")
+
+    connection = mysql.connector.connect(
+        user=db_username,
+        password=db_password,
+        host=db_host,
+        database=db_name
+    )
+    return connection
