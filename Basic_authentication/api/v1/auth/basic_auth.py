@@ -38,8 +38,9 @@ class BasicAuth(Auth):
         # extracts substring from after the space
         return authorization_header[len("Basic "):]
 
-    def decode_base64_authorization_header(self,
-                                           base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(
+            self, base64_authorization_header: str
+            ) -> str:
         """
         Decodes Base64 part of auth header
 
@@ -51,10 +52,10 @@ class BasicAuth(Auth):
         """
         if base64_authorization_header is None:
             return None
-        
+
         if not isinstance(base64_authorization_header, str):
             return None
-        
+
         try:
             # Decode Base64 string
             decoded_string = base64.b64decode(base64_authorization_header)
