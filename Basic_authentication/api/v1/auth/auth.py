@@ -19,19 +19,18 @@ class Auth:
         """
         if path is None:
             return True
-        
+     
         if excluded_paths is None or len(excluded_paths) == 0:
             return True
-        
+
         # Slash tolerance
         if not path.endswith('/'):
             path += '/'
-        
+
         if path in excluded_paths:
             return False
         # if none of these checks are met, require user auth
         return True
-
 
     def authorization_header(self, request=None) -> str:
         """
