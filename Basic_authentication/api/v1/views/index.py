@@ -32,3 +32,11 @@ def unauthorized() -> None:
     Kicks 401 error
     """
     abort(401)
+  
+@app_views.route("/forbidden", methods=['GET'], strict_slashes=False)
+def forbidden() -> None:
+    """
+    Kicks 403 error
+    """
+    abort(403)
+  
