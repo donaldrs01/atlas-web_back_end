@@ -25,6 +25,29 @@ if AUTH_TYPE == "basic_auth":
 else:
     auth = Auth()
 
+
+@app.before_request
+def before_request() -> None:
+    """
+    Before request handler that runs before request process
+    Checking whether path requires authentication
+    """
+    if auth is None:
+        return
+
+    excluded_paths = ['/api/v1/status', '/api/v1/unauthorized/',
+                      '/api/v1/forbidden/']
+    # Check if auth is required for requested path
+    if not auth.require_auth(request.path, excluded_paths):
+        return
+
+    if auth.authorization_header(request) is None:
+        abort(401)  # unauthorized error if no auth header returned
+
+    if auth.current_user(request) is None:
+        abort(403)  # forbidden access if user is not authorized
+
+
 # Error handler for forbidden access (403) error
 @app.errorhandler(403)
 def forbidden_access(error) -> str:
