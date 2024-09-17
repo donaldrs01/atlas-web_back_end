@@ -3,6 +3,7 @@
 Module for BasicAuth class
 """
 from api.v1.auth.auth import Auth
+import base64
 
 
 class BasicAuth(Auth):
@@ -59,5 +60,5 @@ class BasicAuth(Auth):
             decoded_string = base64.b64decode(base64_authorization_header)
             # Convert into UTF-8 string
             return decoded_string.decode('utf-8')
-        except (UnicodeDecodeError)
+        except (UnicodeDecodeError):
             return None  # return None in case of decoding error
