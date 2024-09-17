@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
+
 # Error handler for forbidden access (403) error
 @app.errorhandler(403)
 def forbidden_access(error) -> str:
@@ -20,6 +21,7 @@ def forbidden_access(error) -> str:
     Forbidden handler for 403 error
     """
     return jsonify({"error": "Forbidden"}), 403
+
 
 # Error handler for 401 user errors
 @app.errorhandler(401)
