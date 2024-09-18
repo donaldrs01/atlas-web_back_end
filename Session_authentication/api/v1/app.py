@@ -46,6 +46,11 @@ def before_request() -> None:
 
     if auth.current_user(request) is None:
         abort(403)  # forbidden access if user is not authorized
+        
+    # if current user not authenticated, abort with 403
+    request.current_user = auth.current_user(request)
+    if request.current_user is None:
+        abort(403)
 
 
 # Error handler for forbidden access (403) error
