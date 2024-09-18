@@ -29,4 +29,3 @@ class SessionAuth(Auth):
         self.user_id_by_session_id.update({session_id: user_id})
 
         return session_id
-
