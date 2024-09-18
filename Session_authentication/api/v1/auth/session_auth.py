@@ -28,7 +28,7 @@ class SessionAuth(Auth):
         session_id = str(uuid.uuid4())
         # store session ID mapped to the user_ID in dictionary
         self.user_id_by_session_id.update({session_id: user_id})
-    
+
         return session_id
 
 
