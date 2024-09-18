@@ -40,4 +40,12 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            pass
+        """
+        Method that returns a dict with start/next indexes and the list
+        of data on the given page
+
+        Args:
+        -index (int): the current start index
+        -page_size (int): the number of entries per page
+        """
+        pass
