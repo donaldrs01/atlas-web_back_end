@@ -113,11 +113,13 @@ class BasicAuth(Auth):
         
         try:
             users = User.search({"email": user_email})
-            if not users:
+            if not users or len(users) == 0:
                 return None
+            # loop through users to check for password match
             for user in users:
                 if user.is_valid_password(user_pwd):
                     return user
-        except Exception:
+                return None  # return None if no matching user identified
+        except Exception as e:
             return None
 
