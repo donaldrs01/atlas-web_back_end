@@ -63,3 +63,28 @@ class BasicAuth(Auth):
             return decoded_string.decode('utf-8')
         except (UnicodeDecodeError):
             return None  # return None in case of decoding error
+
+    def extract_user_credentials(
+            self, decoded_base64_authorization_header: str
+            ) -> (str, str):
+        """
+        Extracts user email / password from the decoded Base64 string
+
+        Returns:
+        - None, None if decoded auth header is None
+        - None, None if decoded auth header is not a string
+        - None, None is decoded auth header doesn't contain ':'
+        - On success, returns the user's email address and password
+        """
+        if decoded_base64_authorization_header is None:
+            return None, None
+
+        if not isinstance(decoded_base64_authorization_header, str):
+            return None, None
+
+        if ":" not in decoded_base64_authorization_header:
+            return None, None
+        # use split command to split input string at first colon
+        email, password = decoded_base64_authorization_header.split(":", 1)
+
+        return email, password
