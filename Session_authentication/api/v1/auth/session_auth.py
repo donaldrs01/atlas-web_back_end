@@ -12,7 +12,6 @@ class SessionAuth(Auth):
     # Class attribute that maps session IDs to user_ids
     user_id_by_session_id = {}
 
-
     def create_session(self, user_id: str = None) -> str:
         """
         Instance method that creates a session ID for each user_id
@@ -30,5 +29,4 @@ class SessionAuth(Auth):
         self.user_id_by_session_id.update({session_id: user_id})
 
         return session_id
-
 
