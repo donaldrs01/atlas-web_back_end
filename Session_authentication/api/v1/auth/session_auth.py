@@ -29,3 +29,18 @@ class SessionAuth(Auth):
         self.user_id_by_session_id.update({session_id: user_id})
 
         return session_id
+
+    def user_id_for_session_id(self, session_id: str = None) -> str:
+        """
+        Instance method that returns user_id based on inputted session ID
+
+        Args:
+        -session_id (str) : the session ID of the user
+
+        Returns:
+        - The user_id of the user corresponding to that session
+        """
+        if session_id is None or not isinstance(session_id, str):
+            return None
+        # use .get() to retrieve user_id associated with given session id
+        return self.user_id_by_session_id.get(session_id)
