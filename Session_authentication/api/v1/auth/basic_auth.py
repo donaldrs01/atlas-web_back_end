@@ -122,3 +122,26 @@ class BasicAuth(Auth):
             return None  # return None if no matching user identified
         except Exception as e:
             return None
+    
+     def current_user(self, request=None) -> TypeVar("User"):
+        """
+        After receiving auth request, retrieves the appropriate User instance
+        """
+        # Retrieve authorization header from request
+        auth_header = self.authorization_header(request)
+        if auth_header is None:
+            return None
+        # Extract Base64 section of auth_header
+        base64_part = self.extract_base64_authorization_header(auth_header)
+        if base64_part is None:
+            return None
+        # Decode the Base64 section
+        decoded_auth_header = self.decode_base64_authorization_header(base64_part)
+        if decoded_auth_header is None:
+            return None
+        # Extract email and password from decoded auth header
+        user_email, user_password = self.extract_user_credentials(decoded_auth_header)
+        if user_email is None or user_password is None:
+            return None
+        # Retrieve user instance based on pw/email match
+        return self.user_object_from_credentials(user_email, user_password)
