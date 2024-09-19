@@ -11,7 +11,7 @@ class User(Base):
     """
     User model setup
     """
-    __tablename__ == 'users'
+    __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
     email = Column(String, nullable=False)
