@@ -2,7 +2,7 @@
 """
     Module for the Auth class
 """
-from os import getenv
+import os
 from flask import request
 from typing import List, TypeVar
 
