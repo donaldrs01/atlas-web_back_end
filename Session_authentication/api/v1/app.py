@@ -46,7 +46,7 @@ def before_request() -> None:
 
     if auth.authorization_header(request) is None:
         abort(401)  # unauthorized error if no auth header returned
-    
+
     if auth.session_cookie(request) is None:
         abort(401)
 
