@@ -35,23 +35,21 @@ def before_request() -> None:
     Before request handler that runs before request process
     Checking whether path requires authentication
     """
-    if auth is None:
-        return
-
     excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/',
                       '/api/v1/forbidden/', '/api/v1/auth_session/login/']
-    # Check if auth is required for requested path
-    if not auth.require_auth(request.path, excluded_paths):
+
+    if not auth:
         return
-
-    if auth.authorization_header(request) is None and auth.session_cookie(request) is None:
-        abort(401)
-
-    # if current user not authenticated, abort with 403
+    # attach current user to request
     request.current_user = auth.current_user(request)
-    if request.current_user is None:
-        abort(403)
 
+    # check if authentication is required for path
+    if auth.require_auth(request.path, excluded_paths):
+        if auth.authorization_header(request) is None and auth.session_cookie(request) is None:
+            abort(401)
+        # abort with 403 if current user not authenticated
+        if not request.current_user:
+            abort(403)
 
 # Error handler for forbidden access (403) error
 @app.errorhandler(403)
