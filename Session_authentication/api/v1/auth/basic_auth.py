@@ -122,8 +122,8 @@ class BasicAuth(Auth):
             return None  # return None if no matching user identified
         except Exception as e:
             return None
-    
-     def current_user(self, request=None) -> TypeVar("User"):
+ 
+    def current_user(self, request=None) -> TypeVar("User"):
         """
         After receiving auth request, retrieves the appropriate User instance
         """
