@@ -8,6 +8,9 @@ from sqlalchemy import Column, String, Integer
 Base = declarative_base()
 
 class User(Base):
+    """
+    User model setup
+    """
     __tablename__ == 'users'
 
     id = Column(Integer, primary_key=True)
