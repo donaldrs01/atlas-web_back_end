@@ -22,4 +22,12 @@ def user_login():
     if not password:
         return jsonify({"error": "password missing"}), 400
     # check for email and retrieve associated user
+    user = User.search({"email": email})
+    if not user or len(user) == 0:
+        return jsonify({"error": "no user found for this email"}), 404
+    # check to make sure password matches the user
+    if not user[0].is_valid_password(password):
+        return jsonify({"error": "wrong password"}), 401
+    
+
     
