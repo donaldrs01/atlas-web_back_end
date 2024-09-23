@@ -42,7 +42,7 @@ class Auth:
         # return False on any other exception or if password doesn't match
         return False
 
-def _hash_password(self, password: str) -> bytes:
+def _hash_password(password: str) -> bytes:
         """
         Function that hashes password and returns in
         byte representation
