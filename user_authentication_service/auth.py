@@ -21,7 +21,7 @@ class Auth:
         email and pw input args
         """
         try:
-            user = self._db.find_user_by(email=email)
+            self._db.find_user_by(email=email)
             raise ValueError(f"User {email} already exists")
         except NoResultFound:
             hashed_password = self._hash_password(password)
