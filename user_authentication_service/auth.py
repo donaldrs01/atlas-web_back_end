@@ -7,14 +7,6 @@ from user import Base, User
 import bcrypt
 from sqlalchemy.orm.exc import NoResultFound
 
-def _hash_password(self, password: str) -> bytes:
-        """
-        Function that hashes password and returns in
-        byte representation
-        """
-        byte_password = password.encode("utf-8")
-        hashed_password = bcrypt.hashpw(byte_password, bcrypt.gensalt())
-        return hashed_password
 
 class Auth:
     """Auth class to interact with the authentication database.
@@ -49,3 +41,12 @@ class Auth:
             return False
         # return False on any other exception or if password doesn't match
         return False
+
+def _hash_password(self, password: str) -> bytes:
+        """
+        Function that hashes password and returns in
+        byte representation
+        """
+        byte_password = password.encode("utf-8")
+        hashed_password = bcrypt.hashpw(byte_password, bcrypt.gensalt())
+        return hashed_password
