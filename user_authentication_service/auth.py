@@ -53,9 +53,9 @@ def _hash_password(password: str) -> bytes:
     hashed_password = bcrypt.hashpw(byte_password, bcrypt.gensalt())
     return hashed_password
 
+
 def _generate_uuid() -> str:
     """
     Generates new UUID for user registration
     """
     return str(uuid.uuid4())
-
