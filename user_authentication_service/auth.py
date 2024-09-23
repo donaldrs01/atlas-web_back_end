@@ -5,7 +5,6 @@ Module containig authentication logic
 from db import DB
 from user import Base, User
 import bcrypt
-from db import DB
 from sqlalchemy.orm.exc import NoResultFound
 
 
@@ -31,7 +30,7 @@ class Auth:
 
 
 
-    def _hash_password(password: str) -> bytes:
+    def _hash_password(self, password: str) -> bytes:
         """
         Function that hashes password and returns in
         byte representation
