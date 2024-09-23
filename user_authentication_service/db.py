@@ -40,7 +40,7 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
-    
+
     def find_user_by(self, **kwargs) -> User:
         """
         Function that returns first row of users table
@@ -53,4 +53,3 @@ class DB:
             return find_user
         except TypeError:
             raise InvalidRequestError
-
