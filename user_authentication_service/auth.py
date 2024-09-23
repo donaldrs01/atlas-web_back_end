@@ -36,3 +36,17 @@ class Auth:
         byte_password = password.encode("utf-8")
         hashed_password = bcrypt.hashpw(byte_password, bcrypt.gensalt())
         return hashed_password
+
+    def valid_login(self, email: str, password: str) -> bool:
+        """
+        Function checking for valid login credentials
+        and returns boolean based on result
+        """
+        try:
+            user = self._db.find_user_by(email=email)
+            if bcrypt.checkpw(password.encode("utf-8"), user.hashed_password):
+                return True
+        except NoResultFound:
+            return False
+        # return False on any other exception or if password doesn't match
+        return False
