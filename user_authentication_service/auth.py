@@ -28,7 +28,7 @@ class Auth:
             new_user = self._db.add_user(email, hashed_password)
             return new_user
 
-    def _hash_password(self, password: str) -> bytes:
+    def hash_password(self, password: str) -> bytes:
         """
         Function that hashes password and returns in
         byte representation
