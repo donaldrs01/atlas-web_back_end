@@ -53,3 +53,18 @@ class DB:
             return find_user
         except TypeError:
             raise InvalidRequestError
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """
+        Function that utilizes find_user_by method to locate user
+        and then update user's attributes as passed through kwargs
+        """
+        locate_user = self.find_user_by(id=user_id)
+        if locate_user is None:
+            return None
+        for key, value in kwargs.items():
+            if hasattr(locate_user, key):
+                setattr(locate_user, key, value)
+            else:
+                raise ValueError
+        self._session.commit()
