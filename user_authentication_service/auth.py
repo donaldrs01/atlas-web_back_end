@@ -7,6 +7,14 @@ from user import Base, User
 import bcrypt
 from sqlalchemy.orm.exc import NoResultFound
 
+def _hash_password(self, password: str) -> bytes:
+        """
+        Function that hashes password and returns in
+        byte representation
+        """
+        byte_password = password.encode("utf-8")
+        hashed_password = bcrypt.hashpw(byte_password, bcrypt.gensalt())
+        return hashed_password
 
 class Auth:
     """Auth class to interact with the authentication database.
@@ -27,15 +35,6 @@ class Auth:
             hashed_password = self._hash_password(password)
             new_user = self._db.add_user(email, hashed_password)
             return new_user
-
-    def hash_password(self, password: str) -> bytes:
-        """
-        Function that hashes password and returns in
-        byte representation
-        """
-        byte_password = password.encode("utf-8")
-        hashed_password = bcrypt.hashpw(byte_password, bcrypt.gensalt())
-        return hashed_password
 
     def valid_login(self, email: str, password: str) -> bool:
         """
