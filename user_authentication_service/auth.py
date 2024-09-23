@@ -30,7 +30,7 @@ class Auth:
 
 
 
-    def _hash_password(self, password: str) -> bytes:
+    def hash_password(self, password: str) -> bytes:
         """
         Function that hashes password and returns in
         byte representation
