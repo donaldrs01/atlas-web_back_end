@@ -33,7 +33,7 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-  
+
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
@@ -50,6 +50,34 @@ class TestGetJson(unittest.TestCase):
         mock_request.assert_called_once_with(test_url)
         self.assertEqual(result, test_payload)
 
+
 class TestMemoize(unittest.TestCase):
 
-    def test_memoize
+    def test_memoize(self):
+        """
+        Testing functionality of memoize method
+        """
+
+        class TestClass:
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        test_instance = TestClass()
+
+        # Patch a_method to return 42
+        with patch.object(TestClass, "a_method") as mock_method:
+            mock_method.return_value = 42
+            res1 = test_instance.a_property
+            #  Due to memoization, this should return cached result (res1)
+            res2 = test_instance.a_property
+            #  Becauase of memoization, a_method only called once
+            mock_method.assert_called_once()
+
+            #  Because of caching, results of two test
+            # instances should be the same
+            self.assertEqual(res1, 42)
+            self.assertEqual(res2, 42)
