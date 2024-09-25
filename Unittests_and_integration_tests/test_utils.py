@@ -3,7 +3,7 @@
 Module for util testing
 """
 import unittest
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 from unittest.mock import patch, Mock
 
@@ -49,3 +49,7 @@ class TestGetJson(unittest.TestCase):
         result = get_json(test_url)
         mock_request.assert_called_once_with(test_url)
         self.assertEqual(result, test_payload)
+
+class TestMemoize(unittest.TestCase):
+
+    def test_memoize
