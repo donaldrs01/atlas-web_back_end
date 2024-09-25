@@ -34,3 +34,9 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_json.assert_called_once()
         #  Test to ensure expected value matches result
         self.assertEqual(result, expected_value)
+
+    def test_public_repos_url(self):
+        """
+        Test that public_repos_url returns correct value
+        based on the mocked payload
+        """
