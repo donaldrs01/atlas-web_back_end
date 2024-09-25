@@ -36,6 +36,9 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
+    """
+    Test class for testing the get_json method
+    """
 
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
@@ -55,6 +58,9 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """
+    Test class for testing the memoize method
+    """
 
     def test_memoize(self):
         """
