@@ -3,8 +3,9 @@
 Module for util testing
 """
 import unittest
-import utils
+from utils import access_nested_map, get_json
 from parameterized import parameterized
+from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -17,7 +18,7 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         Unittest for access_nested_map that validates expected values
         """
-        self.assertEqual(utils.access_nested_map(nested_map, path), expected)
+        self.assertEqual(access_nested_map(nested_map, path), expected)
 
     @parameterized.expand([
         ({}, ("a",)),  # 'a' value missing test case
@@ -28,4 +29,23 @@ class TestAccessNestedMap(unittest.TestCase):
         Unittest for access_nested_map that tests for invalid inputs
         """
         with self.assertRaises(KeyError):
-            utils.access_nested_map(nested_map, path)
+            access_nested_map(nested_map, path)
+
+
+class TestGetJson(unittest.TestCase):
+  
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
+    ])
+    @patch("utils.requests.get")  # mocks actual API request call
+    def test_get_json(self, test_url, test_payload, mock_request):
+        """
+        Testing functionality of get_json method using mock API request
+        """
+        mock_response = Mock()
+        mock_response.json.return_value = test_payload
+        mock_request.return_value = mock_response
+        result = get_json(test_url)
+        mock_request.assert_called_once_with(test_url)
+        self.assertEqual(result, test_payload)
