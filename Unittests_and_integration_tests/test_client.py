@@ -3,7 +3,7 @@
 Test module client.py methods
 """
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
 from utils import get_json
@@ -36,7 +36,5 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, expected_value)
 
     def test_public_repos_url(self):
-        """
-        Test that public_repos_url returns correct value
-        based on the mocked payload
-        """
+        
+        mock_payload = {"repos_url": ""}
