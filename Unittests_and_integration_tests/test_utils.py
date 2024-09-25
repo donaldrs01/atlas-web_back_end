@@ -9,6 +9,9 @@ from unittest.mock import patch, Mock
 
 
 class TestAccessNestedMap(unittest.TestCase):
+    """
+    Test class for testing the access_nested_map method
+    """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),  # nested_map, path, and expected values
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
