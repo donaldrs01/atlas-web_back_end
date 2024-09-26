@@ -93,6 +93,11 @@ class TestGithubOrgClient(unittest.TestCase):
         #  Check that license result matches expected result
         self.assertEqual(result, expected)
 
+@parameterized_class([
+    {"org_payload": org_payload, "repos_payload": repos_payload,
+     "expected_repos": expected_repos, "apache2_repos": apache2_repos},
+])
+
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """
     Test class for GithubOrgClient integration tests
@@ -105,3 +110,10 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         #  Store patch object and patch HTTP requests
         cls.get_patcher = patch("requests.get")
         cls.get_patcher.start()
+    
+    @classmethod
+    def tearDownClass(cls):
+        """
+        After test execution, stop patcher and clean up
+        """
+        cls.get_patcher.stop()
