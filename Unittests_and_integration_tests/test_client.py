@@ -92,3 +92,16 @@ class TestGithubOrgClient(unittest.TestCase):
         result = client.has_license(repo, license_key)
         #  Check that license result matches expected result
         self.assertEqual(result, expected)
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """
+    Test class for GithubOrgClient integration tests
+    """
+    @classmethod
+    def setUpClass(cls):
+        """
+        Set up for test class to mock requests.get
+        """
+        #  Store patch object and patch HTTP requests
+        cls.get_patcher = patch("requests.get")
+        cls.get_patcher.start()
