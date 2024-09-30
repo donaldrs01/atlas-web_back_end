@@ -5,7 +5,30 @@ Module for beginning exercises using redis
 import redis
 import uuid
 from typing import Union, Callable, Optional
+from functools import wraps
 
+#  Defining decorator that takes method as argument and wraps
+#  that method in a function that increments counter each time
+#  particular method is used
+def count_calls(method: Callable) -> Callable:
+    """
+    Decorator that counts # of times a specific method is called
+
+    Args:
+        method(Callabe): The method to wrap with the decorator
+    """
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """
+        Wrapper that increments the call count for given method
+        """
+        key = f"count:{method.__qualname__}"
+        #  Increment call count in Redis
+        self._redis.incr(key)
+        #  Call original method and store call count in 'result'
+        result = method(self, *args, **kwargs)
+        return result
+    return wrapper
 
 class Cache:
     """
@@ -19,6 +42,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls  # Place decorator on store method
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Store data in redis with random UUID key
