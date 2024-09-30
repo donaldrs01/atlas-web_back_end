@@ -1,0 +1,1 @@
+Project directory for beginning work with the Redis data storage service.
