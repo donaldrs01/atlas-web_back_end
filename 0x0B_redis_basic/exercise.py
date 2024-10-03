@@ -50,6 +50,14 @@ def call_history(method: Callable) -> Callable:
         return result
     return wrapper
 
+def replay(method):
+    """
+    Method that returns and displays the call_history list
+    of inputs and outputs of particular function
+    """
+    input_key = f"{method.__qualname__}:inputs"
+    output_key = f"{method.__qualname__}:outputs"
+
 
 class Cache:
     """
@@ -62,7 +70,7 @@ class Cache:
         """
         self._redis = redis.Redis()
         self._redis.flushdb()
-        
+
     # Decoraters on store method)
     @count_calls
     @call_history
