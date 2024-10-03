@@ -1,0 +1,1 @@
+-- SQL script that creates new user table
