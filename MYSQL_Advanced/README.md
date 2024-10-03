@@ -1,1 +1,1 @@
-Project directory for more advanced work dealing with MYSQL database managagement.
+Project directory for work related to more advanced tasks dealing with MySQL DB management.
