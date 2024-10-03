@@ -50,6 +50,7 @@ def call_history(method: Callable) -> Callable:
         return result
     return wrapper
 
+
 def replay(method):
     """
     Method that returns and displays the call_history list
