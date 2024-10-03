@@ -10,6 +10,8 @@ from functools import wraps
 #  Defining decorator that takes method as argument and wraps
 #  that method in a function that increments counter each time
 #  particular method is used
+
+
 def count_calls(method: Callable) -> Callable:
     """
     Decorator that counts # of times a specific method is called
@@ -30,6 +32,28 @@ def count_calls(method: Callable) -> Callable:
         return result
     return wrapper
 
+
+def call_history(method: Callable) -> Callable:
+    """
+    Decorater that stores input/output keys of the decorated function
+    """
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """
+        Wrapper function to store input/output values
+        """
+        input_key = f"{method.__qualname__}:inputs"
+        output_key = f"{method.__qualname__}:outputs"
+        # Convert args to string format and push to input_key list
+        self._redis.rpush(input_key, str(args))
+        # Execute wrapped method and record output to output_key list
+        result = method(self, *args, **kwargs)
+        self._redis.rpush(output_key, str(result))
+
+        return result
+    return wrapper
+
+
 class Cache:
     """
     Redis cache class
@@ -42,7 +66,8 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_calls  # Place decorator on store method
+    @call_history  # Decoraters on store method
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Store data in redis with random UUID key
