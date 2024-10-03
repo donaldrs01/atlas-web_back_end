@@ -1,4 +1,4 @@
--- SQL script that creates new user table
+-- Task 0 : SQL script that creates new user table
 
 CREATE TABLE IF NOT EXISTS users (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
