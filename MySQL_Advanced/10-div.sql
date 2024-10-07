@@ -6,7 +6,8 @@ CREATE FUNCTION SafeDiv(
     a INT,
     b INT
 )
-RETURNS FLOAT;
+RETURNS FLOAT
+DETERMINISTIC -- specifies that function will always return same result for same input values
 BEGIN
     -- If divisor is 0, return 0 in order to perform 'safe division'
     IF b = 0 THEN
