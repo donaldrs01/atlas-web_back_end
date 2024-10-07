@@ -11,7 +11,7 @@ BEGIN
 
     SELECT id INTO project_id
     FROM projects
-    WHERE name = project_name
+    WHERE name = project_name;
 
     IF project_id IS NULL THEN -- if project doesn't exist, create new one
         -- Add new project into row 'projects' with the given project_name
