@@ -1,5 +1,7 @@
 -- Task 10: SafeDiv function that performs division operation
 
+DELIMITER $$
+
 CREATE FUNCTION SafeDiv(
     a INT,
     b INT
