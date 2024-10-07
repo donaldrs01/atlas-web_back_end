@@ -4,7 +4,7 @@ SELECT -- select origin column and add up total fans
     origin,
     SUM(fans) AS nb_fans
 FROM 
-    bands
+    bands AS metal_bands
 GROUP BY -- group by origin column
     origin 
 ORDER BY 
