@@ -14,7 +14,7 @@ BEGIN
     -- Update average_score column in 'users' table with avg_score value
     UPDATE users
     SET average_score = avg_score
-    WHERE id = user_id;
+    WHERE id = input_id;
 END$$
 
 DELIMITER ;
