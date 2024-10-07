@@ -7,7 +7,7 @@ CREATE PROCEDURE AddBonus( -- three input parameters
     IN score INT
 )
 BEGIN
-    DECLARE project_id INT;  -- Search for existing project_id
+    DECLARE project_id INT;  -- declare project_id variable to store project_id
 
     SELECT id INTO project_id
     FROM projects
