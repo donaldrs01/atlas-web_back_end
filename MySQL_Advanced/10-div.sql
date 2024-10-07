@@ -6,7 +6,7 @@ CREATE FUNCTION SafeDiv(
     a INT,
     b INT
 )
-RETURNS FLOAT
+RETURNS FLOAT;
 BEGIN
     -- If divisor is 0, return 0 in order to perform 'safe division'
     IF b = 0 THEN
