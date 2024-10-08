@@ -1,0 +1,1 @@
+Project directory for more work with NoSQL databases - specifically MongoDB.
