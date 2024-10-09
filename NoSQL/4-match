@@ -1,0 +1,2 @@
+// Command to list all documents in 'school' collection that have particular name attribute
+db.school.find({name: "Holberton school"})
