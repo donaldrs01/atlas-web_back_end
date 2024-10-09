@@ -1,0 +1,2 @@
+// Command to list number of documents in collection 'school'
+db.school.countDocuments()
