@@ -1,0 +1,2 @@
+// Mongo command to update a document in 'school' collection
+db.school.updateOne({ name: "Holberton school" }, { $set: { address: "972 Mission street"}})
