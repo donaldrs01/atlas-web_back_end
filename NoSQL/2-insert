@@ -1,0 +1,2 @@
+// Command to insert a document with 'name' attribute into 'school' collection
+db.school.insertOne({name: "Holberton school"})
