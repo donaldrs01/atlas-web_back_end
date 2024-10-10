@@ -10,5 +10,5 @@ def log_stats():
     """
     Function that performs various operations and displays Nginx logs
     """
-    document_count = logs.nginx.count_()
+    document_count = logs.nginx.count_documents()
     print(f"{document_count} logs")
