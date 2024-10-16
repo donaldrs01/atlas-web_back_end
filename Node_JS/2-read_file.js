@@ -24,8 +24,21 @@ function countStudents(path) {
                     age: data[2].trim(),
                     field: data[3].trim(),
                 };
+                // Count the students by their field
+                // Check whether field property exists for student
+                if (!studentCounts[newStudent.field]) {
+                    // Initialize empty array to hold students in new field
+                    studentCounts[newStudent.field] = [];
+                }
+                // Add student's first name to corresponding field array
+                studentCounts[newStudent.field].push(newStudent.first);
+                // Increment student count
+                totalStudents++
             }
         }
+
+        // Log total number of students
+        console.log(`Number of students: ${totalStudents}`);
 
 
 }
