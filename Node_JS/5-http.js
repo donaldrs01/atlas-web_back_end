@@ -1,5 +1,5 @@
 const http = require("http");
-const countStudents = require("./3-read_file_async");
+const fs = require("fs");
 
 const app = http.createServer((req, res) => {
     if (req.url === "/") {
@@ -11,20 +11,41 @@ const app = http.createServer((req, res) => {
         const dbpath = process.argv[2]; // Grab db path from argument
         res.writeHead(200, {"Content-Type": "text/plain"});
         res.write("This is the list of our students:\n");
-        // use countStudents function
-        countStudents(dbpath)
-            .then((output) => {
-                res.write(`${output}\n`);  // Print student info
+        // Read the CSV file using async logic
+        fs.readFile(dbpath, "utf-8", (err, data) => {
+            if (err) {
+                res.write("Cannot load the database");
                 res.end();
-            })
-            .catch((error) => {
-                res.end("Cannot load the database");
-            });
-    }
-});
-
-app.listen(1245, () => {
-    console.log("Server running on Port 1245");
+                return;
+            }
+            // Import logic from CSV file read
+            const lines = fileContent.split("\n").filter(line => line.trim() !== "")
+            // Store student data in object array
+            const studentCounts = {};
+            let totalStudents = 0;
+            // Iterate through each line
+            for (let index = 0; index < lines.length; index++) {
+                const line = lines[index];
+                const data = line.split(",");
+                // Skip over header line and invalid data
+                if (index === 0 || data.length < 4) continue;
+                // Record valid student data
+                if (line !== "") {
+                    const newStudent = {
+                        firstName: data[0].trim(),
+                        lastName: data[1].trim(),
+                        age: data[2].trim(),
+                        field: data[3].trim(),
+                    };
+                    if (!studentCounts[newStudent.field]) {
+                        // Initialize new array to hold students if new field entry
+                        studentCounts[newStudent.field] = [];
+                    }
+                    studentCounts[newStudent.field].push(newStudent.firstName);
+                    totalStudents++
+                }
+                
+                // Wri
 });
 
 module.exports = app;
