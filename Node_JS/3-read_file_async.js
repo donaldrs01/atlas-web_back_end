@@ -1,4 +1,5 @@
 const fs = require("node:fs/promises");
+const process = require("process");
 
 async function countStudents(path) {
     let fileContent;
