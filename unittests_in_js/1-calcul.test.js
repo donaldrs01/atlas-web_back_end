@@ -1,7 +1,7 @@
 const assert = require("assert");
 const calculateNumber = require("./1-calcul");
 
-describe("calculateNumber" function () {
+describe("calculateNumber", function () {
     it("should return rounded sum when type is SUM", function () {
         assert.equal(calculateNumber("SUM", 4.6, 1.2), 6);
         assert.equal(calculateNumber("SUM", 9.8, 2.4), 12);
