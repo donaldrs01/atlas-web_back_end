@@ -13,8 +13,6 @@ function calculateNumber(type, a, b) {
         }
         return Around / Bround;
     }
-
-    return Around + Bround;
 }
 
 module.exports = calculateNumber;
