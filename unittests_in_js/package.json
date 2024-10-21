@@ -1,0 +1,12 @@
+{
+  "name": "unittests_in_js",
+  "version": "1.0.0",
+  "description": "Project directory for work related to unittesting in JS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
