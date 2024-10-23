@@ -1,0 +1,1 @@
+Project directory that revists Redis and different operations run on the Redis client (storage, async operations, queuing system, etc.)
