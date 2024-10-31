@@ -6,4 +6,7 @@ Authentication and security were key focuses as well. I implemented basic and se
 
 Finally, I honed my testing practices, working extensively on unit and integration tests in JavaScript.
 
-This was all part of my education at Atlas School in Tulsa, Oklahoma. This repository is the culmination of my fourth trimester of work as I continue my transition from the world of education into the world of software engineering. 
+This was all part of my education at Atlas School in Tulsa, Oklahoma. This repository is the culmination of my fourth trimester of work as I continue my transition from the world of education into the world of software engineering.
+
+[GitHub profile](https://github.com/donaldrs01)  
+[LinkedIn profile](https://www.linkedin.com/in/ryandonaldson90/)
