@@ -19,3 +19,6 @@ def log_stats():
     print("Methods:")
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
+    for method in methods:
+        method_count = collection.count_documents({"method": method})
+
