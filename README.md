@@ -1,4 +1,4 @@
-![Screenshot for README](/images/screenshot.png)
+![Screenshot for README](/images/screenshot.png)  
 This repository contains a comprehensive collection of projects focused on backend development and integration.
 
 The work begins with foundational ES6 concepts, where I familiarized myself with modern JavaScript syntax, asynchronous operations, and the use of promises. Node.js was central to this trimester’s work, where I developed API integrations and managed requests through well-defined routes and request handlers.
